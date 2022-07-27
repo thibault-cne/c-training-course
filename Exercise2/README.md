@@ -38,7 +38,7 @@ cd tests
 go run main.go -questions q11
 ```
 
-#### Exercise 2 : arguments/stdout
+#### Exercise 2 : arguments/stdout/stdin
 
 In this exercise you will create a function that returns the max of 3 integers. You will retrieve the 3 integers from the arguments of the programs and you will send the result on the stdout (terminal prompt).
 
