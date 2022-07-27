@@ -13,7 +13,7 @@ The `calculator.h` is the header file. It should contain all functions. The `cal
 - A function to multiply two integers with a signature of  `int multiplication(int firstOperand, int secondOperand);`
 - A function to divide two integers with a signature of `double division(int firstOperand, int secondOperand);`. Be carefull, in case `secondOperand = 0` make sure the function returns 0.
 
-You can now run the `make questionTwo`command and run `build/questionTwo.exe` to check your answers.
+You can now run the `make questionTwo` command and run `build/questionTwo.exe` to check your answers.
 
 **Question 3.** Write inside the `calculator.c` file 2 functions :
 
