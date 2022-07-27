@@ -27,6 +27,7 @@ To compile your file you can use the given makefile with the command `make quest
 
 ``` bash
 mkdir -p ./objs | clang -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/helloworld.c -o objs/helloworld.o
+
 clang -Wall -Wextra -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls  ./objs/helloworld.o -o ./build/questionOne.exe
 ```
 
@@ -48,13 +49,30 @@ In this exercise you will create a function that returns the max of 3 integers. 
 - Inside this file create a function with the signature `int max(int a, int b, int c);` thats return the maximum between 3 integers.
 
 You can test your function with the given snow tests. You can run it with the makefile with `make questionTwo` and then `./build/questionTwo.exe`.
+You can also compile the files with the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/arguments_stdout_questionOne.c -o objs/arguments_stdout_questionOne.o
+
+clang objs/max3.o objs/arguments_stdout_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwo -I includes/
+```
 
 **Question 2.**
 
 - Create a `max3_main.c` file inside the `srcs` folder
 - Create a main function to retrieve the 3 integers from the call arguments and display the result on the stdout.
 
-You can test your function with the golang package :
+You can compile your code with the makefile : `make questionTwo` or you can also use the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3_main.c -o objs/max3_main.o
+
+clang objs/max3.o objs/max3_main.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThree -I includes/
+```
+
+You can now test your function with the golang package :
 
 ``` bash
 cd tests

@@ -25,7 +25,7 @@ CFLAGS		=	-DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=addr
 
 ${O_PATH}%.o:	${S_PATH}%.c
 				@mkdir -p ${dir $@}
-				@${CC} ${CFLAGS} -c $< -o $@ -I @{I_PATH}
+				@${CC} ${CFLAGS} -c $< -o $@
 				@echo "${BOLD}${CYAN}Compiling${S}${S} ${IGREY}$<${S} ${YELLOW}-> ${S}${SBLUE}$@${S} ⚙️"
 
 
@@ -53,7 +53,7 @@ questionThree:	${OBJS_3}
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
 				@mv ./$@ ${B_PATH}/$@.exe
 
-all:		build questionOne questionTwo
+all:		build questionOne questionTwo questionThree
 
 clean:
 			@${RM} ${O_PATH}*
