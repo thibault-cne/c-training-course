@@ -9,36 +9,36 @@ import (
 )
 
 var (
-	question = flag.String("question", "q0", "Question you want to test. Must be entered like this : q1 or question1")
+	question = flag.Bool("questions", false, "Must be present to provide tests.")
 )
 
 func main() {
-	fmt.Println(color.GreenString("[TESTS INITIALIZATION]"))
-
 	// We get the value of the question flag passed in the call of the executable
 	// For exemple : tests -question=q1
 	flag.Parse()
 
-	questionNumber := checkQuestionsExistence(*question)
-
-	if questionNumber == -1 {
-		fmt.Println(color.RedString("[ERROR]"), "Wrong question number the question must be entered like this : q1 or question1")
+	if !*question {
+		fmt.Println(color.RedString("[ERROR]"), "Questions flag must be enabled to provide tests.")
 		return
 	}
 
-	fmt.Println(color.GreenString("[STARTING TESTS]"))
+	fmt.Println(color.YellowString("[STARTING TESTS]"))
 
-	if questionNumber == 1 {
+	questions := flag.Args()
+
+	for _, q := range questions {
+		launchQuestion(q)
+	}
+
+	fmt.Println(color.YellowString("[END OF TESTS]"))
+}
+
+func launchQuestion(question string) {
+	if question == "q1" || question == "question1" {
 		questions.QuestionOne()
 	}
 
-	fmt.Println(color.GreenString("[END OF TESTS]"))
-}
-
-func checkQuestionsExistence(question string) int {
-	if question == "q1" || question == "question1" {
-		return 1
+	if question == "q2" || question == "question2" {
+		questions.QuestionTwo()
 	}
-
-	return -1
 }

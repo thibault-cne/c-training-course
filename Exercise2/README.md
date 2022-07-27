@@ -6,6 +6,14 @@
 
 For this exercise, `golang` will be needed to run the tests. You can download it directly from the official golang website : [official golang page](https://go.dev/doc/install).
 
+You can run all the golang tests inside the `tests` folder with the following command : 
+
+``` bash
+go run main.go -questions ${question list}
+```
+
+Where the question list is a list of all questions you want to test. Questions names should be written in this form : `q1` or `question1` for question one.
+
 ### Exercises
 
 #### Exercise 1 : Hello World
@@ -26,5 +34,29 @@ You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -question=q1
+go run main.go -questions q1
+```
+
+#### Exercise 2 : arguments/stdout
+
+In this exercise you will create a function that returns the max of 3 integers. You will retrieve the 3 integers from the arguments of the programs and you will send the result on the stdout (terminal prompt).
+
+**Question 1.**
+
+- Create a `max3.c` file inside the `srcs` folder
+- Create a `max3.h` file inside the `includes` folder and link this file to `max3.c`
+- Inside this file create a function with the signature `int max(int a, int b, int c);` thats return the maximum between 3 integers.
+
+You can test your function with the given snow tests. You can run it with the makefile with `make questionTwo` and then `./build/questionTwo.exe`.
+
+**Question 2.**
+
+- Create a `max3_main.c` file inside the `srcs` folder
+- Create a main function to retrieve the 3 integers from the call arguments and display the result on the stdout.
+
+You can test your function with the golang package :
+
+``` bash
+cd tests
+go run main.go -questions q2
 ```

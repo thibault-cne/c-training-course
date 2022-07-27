@@ -1,23 +1,27 @@
-FILES =		main.c			\
-			calculator.c	\
-			maths.c			\
-
+# You have to put your .c files in the FILES variable.
+FILES_1 =	helloworld.c
+FILES_2	=	max3.c arguments_stdout_questionOne.c
+FILES_3 = 	max3.c max3_main.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
 I_PATH	=	includes/
 B_PATH	=	build/
 
-SRCS	=	${addprefix ${S_PATH}, ${FILES}}
-OBJS	=	${addprefix ${O_PATH}, ${FILES:.c=.o}}
+SRCS_1	=	${addprefix ${S_PATH}, ${FILES_1}}
+OBJS_1	=	${addprefix ${O_PATH}, ${FILES_1:.c=.o}}
 
-NAME	=	calculator_and_math
+SRCS_2	=	${addprefix ${S_PATH}, ${FILES_2}}
+OBJS_2	=	${addprefix ${O_PATH}, ${FILES_2:.c=.o}}
+
+SRCS_3	=	${addprefix ${S_PATH}, ${FILES_3}}
+OBJS_3	=	${addprefix ${O_PATH}, ${FILES_3:.c=.o}}
 
 CC		=	clang
 
 RM		=	rm -rf
 
-CFLAGS	=	-DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
+CFLAGS		=	-DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
 
 ${O_PATH}%.o:	${S_PATH}%.c
 				@mkdir -p ${dir $@}
@@ -25,15 +29,31 @@ ${O_PATH}%.o:	${S_PATH}%.c
 				@echo "${BOLD}${CYAN}Compiling${S}${S} ${IGREY}$<${S} ${YELLOW}-> ${S}${SBLUE}$@${S} ⚙️"
 
 
-${NAME}:	${OBJS}
-			@${CC} ${OBJS} ${CFLAGS} -o $@ -I ${I_PATH}
-			@echo ""
-			@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
-			@echo ""
-			@echo "\033[3;92mCompilation is completed !${S} 🎉"
-			@mv ./$@ ${B_PATH}$@.exe
+questionOne:	${OBJS_1}
+				@${CC} ${OBJS_1} ${CFLAGS} -o $@ -I ${I_PATH}
+				@echo ""
+				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+				@echo ""
+				@echo "\033[3;92mCompilation is completed !${S} 🎉"
+				@mv ./$@ ${B_PATH}/$@.exe
 
-all:		build ${NAME}
+questionTwo:	${OBJS_2}
+				@${CC} ${OBJS_2} ${CFLAGS} -o $@ -I ${I_PATH}
+				@echo ""
+				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+				@echo ""
+				@echo "\033[3;92mCompilation is completed !${S} 🎉"
+				@mv ./$@ ${B_PATH}/$@.exe
+
+questionThree:	${OBJS_3}
+				@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
+				@echo ""
+				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+				@echo ""
+				@echo "\033[3;92mCompilation is completed !${S} 🎉"
+				@mv ./$@ ${B_PATH}/$@.exe
+
+all:		build questionOne questionTwo
 
 clean:
 			@${RM} ${O_PATH}*
@@ -47,12 +67,6 @@ space:
 			@echo " "
 
 re:			fclean space all
-
-test:		re
-			@echo ""
-			@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
-			@echo ""
-			@${B_PATH}${NAME}.exe
 
 build: 		
 			@mkdir -p $@
