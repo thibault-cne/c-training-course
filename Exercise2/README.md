@@ -63,6 +63,10 @@ clang objs/max3.o objs/arguments_stdout_questionOne.o -DSNOW_ENABLED -Wall -Wext
 - Create a `max3_main.c` file inside the `srcs` folder
 - Create a main function to retrieve the 3 integers from the call arguments and display the result on the stdout.
 
+Make sure that the program end if their is more or less than 3 values entered.
+
+Help : You can use the `atoi` functions to convert string to integer. You can check the manual of the function with `man 3 atoi`.
+
 You can compile your code with the makefile : `make questionTwo` or you can also use the following code :
 
 ``` bash

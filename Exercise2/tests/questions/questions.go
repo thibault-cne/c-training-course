@@ -41,6 +41,8 @@ func QuestionTwo() {
 	cmds = append(cmds, questionTwoCmdModel{cmd: exec.Command("../build/questionThree.exe", "-1", "10", "2"), result: "10"})
 	cmds = append(cmds, questionTwoCmdModel{cmd: exec.Command("../build/questionThree.exe", "10", "100", "30"), result: "100"})
 	cmds = append(cmds, questionTwoCmdModel{cmd: exec.Command("../build/questionThree.exe", "-1", "-30", "-2"), result: "-1"})
+	cmds = append(cmds, questionTwoCmdModel{cmd: exec.Command("../build/questionThree.exe", "-1", "-30"), result: "null"})
+	cmds = append(cmds, questionTwoCmdModel{cmd: exec.Command("../build/questionThree.exe", "-1", "-30", "-2", "4"), result: "null"})
 
 	passedTests := 0
 
@@ -51,6 +53,12 @@ func QuestionTwo() {
 
 		answer := stdout.Text()
 
+		if cmd.result == "null" && answer == "" {
+			fmt.Println(color.GreenString("		✓ Success :"), "Max executable.")
+			passedTests += 1
+			continue
+		}
+
 		if answer == cmd.result {
 			fmt.Println(color.GreenString("		✓ Success :"), "Max executable.")
 			passedTests += 1
@@ -60,6 +68,6 @@ func QuestionTwo() {
 		}
 	}
 
-	fmt.Printf("		Max : Passed %d/5 test\n", passedTests)
+	fmt.Printf("		Max : Passed %d/7 test\n", passedTests)
 	fmt.Println(color.BlueString("	[ENDING MAX3 TEST]"))
 }
