@@ -23,7 +23,7 @@ Where the question list is a list of all questions you want to test. Questions n
 
 Help : you will need to create a `main()` function and use the `printf` function. Use the man of the function with the command `man 3 printf`.
 
-To compile your file you can use the given makefile with the command `make questionOne` or use the following commands :
+To compile your file you can use the given makefile with the command `make questionOneOne` or use the following commands :
 
 ``` bash
 mkdir -p ./objs | clang -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/helloworld.c -o objs/helloworld.o
@@ -35,7 +35,7 @@ You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q1
+go run main.go -questions q11
 ```
 
 #### Exercise 2 : arguments/stdout
@@ -48,7 +48,7 @@ In this exercise you will create a function that returns the max of 3 integers. 
 - Create a `max3.h` file inside the `includes` folder and link this file to `max3.c`
 - Inside this file create a function with the signature `int max(int a, int b, int c);` thats return the maximum between 3 integers.
 
-You can test your function with the given snow tests. You can run it with the makefile with `make questionTwo` and then `./build/questionTwo.exe`.
+You can test your function with the given snow tests. You can run it with the makefile with `make questionTwo` and then `./build/questionTwoOne.exe`.
 You can also compile the files with the following code :
 
 ``` bash
@@ -60,25 +60,45 @@ clang objs/max3.o objs/arguments_stdout_questionOne.o -DSNOW_ENABLED -Wall -Wext
 
 **Question 2.**
 
-- Create a `max3_main.c` file inside the `srcs` folder
+- Create a `max3_argv.c` file inside the `srcs` folder
 - Create a main function to retrieve the 3 integers from the call arguments and display the result on the stdout.
 
 Make sure that the program end if their is more or less than 3 values entered.
 
 Help : You can use the `atoi` functions to convert string to integer. You can check the manual of the function with `man 3 atoi`.
 
-You can compile your code with the makefile : `make questionTwo` or you can also use the following code :
+You can compile your code with the makefile : `make questionTwoTwo` or you can also use the following code :
 
 ``` bash
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
-clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3_main.c -o objs/max3_main.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3_argv.c -o objs/max3_argv.o
 
-clang objs/max3.o objs/max3_main.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThree -I includes/
+clang objs/max3.o objs/max3_argv.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwoTwo -I includes/
 ```
 
 You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q2
+go run main.go -questions q22
 ```
+
+**Question 3.**
+
+- Create a `max3_stdin.c` file inside the `srcs` folder
+- Create a main function to calculate the maximum between 3 integers. The user will enter all numbers in the CLI (stdin). Each lines correspond to a number.
+
+You can compile your code with the makefile : `make questionTwoThree` or you can also use the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3_stdin.c -o objs/max3_stdin.o
+
+clang objs/max3.o objs/max3_stdin.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwoThree -I includes/
+```
+
+You can now test your function with the golang package :
+
+``` bash
+cd tests
+go run main.go -questions q23

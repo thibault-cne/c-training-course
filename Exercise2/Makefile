@@ -1,7 +1,8 @@
 # You have to put your .c files in the FILES variable.
 FILES_1 =	helloworld.c
 FILES_2	=	max3.c arguments_stdout_questionOne.c
-FILES_3 = 	max3.c max3_main.c
+FILES_3 = 	max3.c max3_argv.c
+FILES_4	=	max3.c max3_stdin.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -17,6 +18,9 @@ OBJS_2	=	${addprefix ${O_PATH}, ${FILES_2:.c=.o}}
 SRCS_3	=	${addprefix ${S_PATH}, ${FILES_3}}
 OBJS_3	=	${addprefix ${O_PATH}, ${FILES_3:.c=.o}}
 
+SRCS_4	=	${addprefix ${S_PATH}, ${FILES_4}}
+OBJS_4	=	${addprefix ${O_PATH}, ${FILES_4:.c=.o}}
+
 CC		=	clang
 
 RM		=	rm -rf
@@ -25,35 +29,43 @@ CFLAGS		=	-DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=addr
 
 ${O_PATH}%.o:	${S_PATH}%.c
 				@mkdir -p ${dir $@}
-				@${CC} ${CFLAGS} -c $< -o $@ -I @{I_PATH}
+				@${CC} ${CFLAGS} -c $< -o $@
 				@echo "${BOLD}${CYAN}Compiling${S}${S} ${IGREY}$<${S} ${YELLOW}-> ${S}${SBLUE}$@${S} ⚙️"
 
 
-questionOne:	${OBJS_1}
-				@${CC} ${OBJS_1} ${CFLAGS} -o $@ -I ${I_PATH}
-				@echo ""
-				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
-				@echo ""
-				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+questionOneOne:		${OBJS_1}
+					@${CC} ${OBJS_1} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
 
-questionTwo:	${OBJS_2}
-				@${CC} ${OBJS_2} ${CFLAGS} -o $@ -I ${I_PATH}
-				@echo ""
-				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
-				@echo ""
-				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+questionTwoOne:		${OBJS_2}
+					@${CC} ${OBJS_2} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
 
-questionThree:	${OBJS_3}
-				@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
-				@echo ""
-				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
-				@echo ""
-				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+questionTwoTwo:		${OBJS_3}
+					@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
 
-all:		build questionOne questionTwo
+questionTwoThree:	${OBJS_4}
+					@${CC} ${OBJS_4} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
+
+all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree
 
 clean:
 			@${RM} ${O_PATH}*
