@@ -1,4 +1,4 @@
-#include "../solution/includes/snow.h"
+#include "../includes/snow.h"
 #include "../includes/dayofbirth.h"
 
 snow_main();

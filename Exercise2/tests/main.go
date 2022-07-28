@@ -34,15 +34,19 @@ func main() {
 }
 
 func launchQuestion(question string) {
-	if question == "q11" || question == "question1" {
+	if question == "q11" || question == "question11" {
 		questions.QuestionOneOne()
 	}
 
-	if question == "q22" || question == "question2" {
+	if question == "q22" || question == "question22" {
 		questions.QuestionTwoTwo()
 	}
 
-	if question == "q23" || question == "question3" {
+	if question == "q23" || question == "question23" {
 		questions.QuestionTwoThree()
+	}
+
+	if question == "q32" || question == "question32" {
+		questions.QuestionThreeTwo()
 	}
 }

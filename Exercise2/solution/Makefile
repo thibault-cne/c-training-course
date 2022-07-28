@@ -4,6 +4,7 @@ FILES_2	=	max3.c exerciseTwo_questionOne.c
 FILES_3 = 	max3.c max3_argv.c
 FILES_4	=	max3.c max3_stdin.c
 FILES_5	=	dayofbirth.c exerciseThree_questionOne.c
+FILES_6	=	dayofbirth.c dayofbirth_argv.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -24,6 +25,9 @@ OBJS_4	=	${addprefix ${O_PATH}, ${FILES_4:.c=.o}}
 
 SRCS_5	=	${addprefix ${S_PATH}, ${FILES_5}}
 OBJS_5	=	${addprefix ${O_PATH}, ${FILES_5:.c=.o}}
+
+SRCS_6	=	${addprefix ${S_PATH}, ${FILES_6}}
+OBJS_6	=	${addprefix ${O_PATH}, ${FILES_6:.c=.o}}
 
 CC		=	clang
 
@@ -77,8 +81,16 @@ questionThreeOne:	${OBJS_5}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@.exe
 
+questionThreeTwo:	${OBJS_6}
+					@${CC} ${OBJS_6} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
 
-all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree questionThreeOne
+
+all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree questionThreeOne questionThreeTwo
 
 clean:
 			@${RM} ${O_PATH}*

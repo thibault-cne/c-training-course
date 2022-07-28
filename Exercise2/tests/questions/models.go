@@ -2,12 +2,12 @@ package questions
 
 import "os/exec"
 
-type questionTwoCmdModel struct {
+type commandResultModel struct {
 	cmd    *exec.Cmd
 	result string
 }
 
-type questionThreeCmdModel struct {
+type commandThreeStdinArgsModel struct {
 	cmd       *exec.Cmd
 	firstInt  string
 	secondInt string

@@ -34,7 +34,7 @@ To compile your file you can use the given makefile with the command `make quest
 ``` bash
 mkdir -p ./objs | clang -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/helloworld.c -o objs/helloworld.o
 
-clang -Wall -Wextra -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls  ./objs/helloworld.o -o ./build/questionOne.exe
+clang -Wall -Wextra -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls  ./objs/helloworld.o -o ./build/questionOneOne.exe
 ```
 
 You can now test your function with the golang package :
@@ -54,14 +54,14 @@ In this exercise you will create a function that returns the max of 3 integers. 
 - Create a `max3.h` file inside the `includes` folder and link this file to `max3.c`
 - Inside this file create a function with the signature `int max(int a, int b, int c);` thats return the maximum between 3 integers.
 
-You can test your function with the given snow tests. You can run it with the makefile with `make questionTwo` and then `./build/questionTwoOne.exe`.
+You can test your function with the given snow tests. You can run it with the makefile with `make questionTwoOne` and then `./build/questionTwoOne.exe`.
 You can also compile the files with the following code :
 
 ``` bash
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseTwo_questionOne.c -o objs/exerciseTwo_questionOne.o
 
-clang objs/max3.o objs/exerciseTwo_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwo -I includes/
+clang objs/max3.o objs/exerciseTwo_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwoOne -I includes/
 ```
 
 **Question 2.**
@@ -137,6 +137,33 @@ Help : you can use the Zeller formula (1885) :
 >
 >   ω ≡ 0 (mod 7) if it's sunday, a 1 (mod 7) if it's monday, etc.
 
+You can test your function with the given snow tests. You can run it with the makefile with `make questionThreeOne` and then `./build/questionThreeOne.exe`.
+You can also compile the files with the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth.c -o objs/dayofbirth.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseThree_questionOne.c -o objs/exerciseThree_questionOne.o
+
+clang objs/dayofbirth.o objs/exerciseThree_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThreeOne -I includes/
+```
+
 **Question 2.**
 
-- Create a main function to retrieve the name and the birthdate of a user and display is day of birth. For exemple, `./questionThreeTwo Thibault C. 23/03/2001` returns `Thibault C. was born a friday`.
+- Create a file called `dayofbirth_argv.c` inside the `srcs` folder.
+- Create a main function to retrieve the name and the birthdate of a user and display is day of birth. For exemple, `./questionThreeTwo Thibault C. 23/03/2001` prints `Thibault C. was born on a friday.`. If the date don't exist, for exemple 20/14/2022, the program prints `The date 20/14/2022 don't exist.`.
+
+You can compile your code with the makefile : `make questionThreeTwo` or you can also use the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth.c -o objs/dayofbirth.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth_argv.c -o objs/dayofbirth_argv.o
+
+clang objs/dayofbirth.o objs/dayofbirth_argv.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThreeTwo -I includes/
+```
+
+You can now test your function with the golang package :
+
+``` bash
+cd tests
+go run main.go -questions q32
+```
