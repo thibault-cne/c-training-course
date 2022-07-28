@@ -135,7 +135,7 @@ Help : you can use the Zeller formula (1885) :
 > - c = ⌊b / 100⌋
 > - e = b - 100 × c
 >
->   ω ≡ 0 (mod 7) if it's sunday, a 1 (mod 7) if it's monday, etc.
+>   ω ≡ 0 (mod 7) if it's sunday, 1 (mod 7) if it's monday, etc.
 
 You can test your function with the given snow tests. You can run it with the makefile with `make questionThreeOne` and then `./build/questionThreeOne.exe`.
 You can also compile the files with the following code :
