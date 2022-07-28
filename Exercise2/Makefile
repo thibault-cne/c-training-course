@@ -1,8 +1,9 @@
 # You have to put your .c files in the FILES variable.
 FILES_1 =	helloworld.c
-FILES_2	=	max3.c arguments_stdout_questionOne.c
+FILES_2	=	max3.c exerciseTwo_questionOne.c
 FILES_3 = 	max3.c max3_argv.c
 FILES_4	=	max3.c max3_stdin.c
+FILES_5	=	dayofbirth.c exerciseThree_questionOne.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -20,6 +21,9 @@ OBJS_3	=	${addprefix ${O_PATH}, ${FILES_3:.c=.o}}
 
 SRCS_4	=	${addprefix ${S_PATH}, ${FILES_4}}
 OBJS_4	=	${addprefix ${O_PATH}, ${FILES_4:.c=.o}}
+
+SRCS_5	=	${addprefix ${S_PATH}, ${FILES_5}}
+OBJS_5	=	${addprefix ${O_PATH}, ${FILES_5:.c=.o}}
 
 CC		=	clang
 
@@ -65,7 +69,16 @@ questionTwoThree:	${OBJS_4}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@.exe
 
-all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree
+questionThreeOne:	${OBJS_5}
+					@${CC} ${OBJS_5} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
+
+
+all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree questionThreeOne
 
 clean:
 			@${RM} ${O_PATH}*

@@ -2,6 +2,12 @@
 
 ## Table of contents
 
+1. [Requirements](#requirements)
+2. [Exercises](#exercises)
+    - [Exercise 1](#exercise-1--hello-world)
+    - [Exercise 2](#exercise-2--argumentsstdoutstdin)
+    - [Exercise 3](#exercise-3--argumentsstdinstdout)
+
 ### Requirements
 
 For this exercise, `golang` will be needed to run the tests. You can download it directly from the official golang website : [official golang page](https://go.dev/doc/install).
@@ -53,9 +59,9 @@ You can also compile the files with the following code :
 
 ``` bash
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
-clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/arguments_stdout_questionOne.c -o objs/arguments_stdout_questionOne.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseTwo_questionOne.c -o objs/exerciseTwo_questionOne.o
 
-clang objs/max3.o objs/arguments_stdout_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwo -I includes/
+clang objs/max3.o objs/exerciseTwo_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwo -I includes/
 ```
 
 **Question 2.**
@@ -88,6 +94,8 @@ go run main.go -questions q22
 - Create a `max3_stdin.c` file inside the `srcs` folder
 - Create a main function to calculate the maximum between 3 integers. The user will enter all numbers in the CLI (stdin). Each lines correspond to a number.
 
+Help : you can use the `fgets` function to retrieve the use input. You can get all the information on the function with the command `man 3 fgets`.
+
 You can compile your code with the makefile : `make questionTwoThree` or you can also use the following code :
 
 ``` bash
@@ -102,3 +110,33 @@ You can now test your function with the golang package :
 ``` bash
 cd tests
 go run main.go -questions q23
+```
+
+#### Exercise 3 : arguments/stdin/stdout
+
+- Create a file called `dayofbirth.c` inside the `srcs` folder and a file `dayofbirth.h` inside the `includes` folder.
+
+**Question 1.**
+
+- Create a function that for a given date return the day of the date. The signature of the functions is : `int dayfromdate(int day, int month, int year);`. For exemple, `dayfromdate(28, 7, 2022)` returns `4` because the 28/07/2022 is a thursday and it is the fourth day of the week. Make sure that if it the input is not a date, the function returns `-1`
+
+Help : you can use the Zeller formula (1885) :
+
+> ω = d + ⌊2.6 × t - 0.2⌋ + e  + ⌊e / 4⌋ + ⌊c / 4⌋ + 5 × c
+>
+>Where :
+>
+> - d : number of the day in the month,
+> - m : number of the month in the year,
+> - y : number of the year,
+> - ⌊x⌋ means the integer part of x,
+> - t = m - 2 if m > 2 else m + 10
+> - b = y if m > 2 else y - 1
+> - c = ⌊b / 100⌋
+> - e = b - 100 × c
+>
+>   ω ≡ 0 (mod 7) if it's sunday, a 1 (mod 7) if it's monday, etc.
+
+**Question 2.**
+
+- Create a main function to retrieve the name and the birthdate of a user and display is day of birth. For exemple, `./questionThreeTwo Thibault C. 23/03/2001` returns `Thibault C. was born a friday`.
