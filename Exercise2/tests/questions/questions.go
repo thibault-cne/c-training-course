@@ -175,3 +175,59 @@ func QuestionThreeTwo() {
 	fmt.Printf("		Dayofbirth argv : Passed %d/%d test\n", passedTests, totalTest)
 	fmt.Println(color.BlueString("	[ENDING DAYOFBIRTH ARGV TEST]"))
 }
+
+func QuestionThreeThree() {
+	fmt.Println(color.BlueString("	[STARTING DAYOFBIRTH STDIN TEST]"))
+
+	var (
+		cmds        = make([]commandStdinArgsModel, 0)
+		passedTests = 0
+		totalTest   = 0
+		executable  = "../build/questionThreeThree.exe"
+	)
+
+	cmds = append(cmds, commandStdinArgsModel{
+		cmd:    exec.Command(executable),
+		args:   []string{"Thibault C.", "23/03/2001"},
+		result: "Thibault C. was born on a Friday.",
+	})
+	cmds = append(cmds, commandStdinArgsModel{
+		cmd:    exec.Command(executable),
+		args:   []string{"Gerald O.", "19/03/1978"},
+		result: "Gerald O. was born on a Sunday.",
+	})
+	cmds = append(cmds, commandStdinArgsModel{
+		cmd:    exec.Command(executable),
+		args:   []string{"John D.", "23/12/1970"},
+		result: "John D. was born on a Wednesday.",
+	})
+	cmds = append(cmds, commandStdinArgsModel{
+		cmd:    exec.Command(executable),
+		args:   []string{"John C.", "30/14/1978"},
+		result: "The date 30/14/1978 don't exist.",
+	})
+
+	for _, cmd := range cmds {
+		totalTest++
+		stdin, stdout := startCommand(cmd.cmd)
+
+		for _, arg := range cmd.args {
+			stdin.Write([]byte(arg + "\n"))
+		}
+
+		stdout.Scan()
+
+		answer := stdout.Text()
+
+		if answer == cmd.result {
+			fmt.Println(color.GreenString("		✓ Success :"), "Dayofbirth stdin executable.")
+			passedTests += 1
+		} else {
+			fmt.Println(color.RedString("		✕ Failed :"), "Dayofbirth stdin executable.")
+			fmt.Printf("			Expected '%s' but got '%s'\n", cmd.result, answer)
+		}
+	}
+
+	fmt.Printf("		Dayofbirth stdin : Passed %d/%d test\n", passedTests, totalTest)
+	fmt.Println(color.BlueString("	[ENDING DAYOFBIRTH STDIN TEST]"))
+}

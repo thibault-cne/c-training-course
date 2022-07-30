@@ -49,4 +49,8 @@ func launchQuestion(question string) {
 	if question == "q32" || question == "question32" {
 		questions.QuestionThreeTwo()
 	}
+
+	if question == "q33" || question == "question33" {
+		questions.QuestionThreeThree()
+	}
 }

@@ -5,6 +5,7 @@ FILES_3 = 	max3.c max3_argv.c
 FILES_4	=	max3.c max3_stdin.c
 FILES_5	=	dayofbirth.c exerciseThree_questionOne.c
 FILES_6	=	dayofbirth.c dayofbirth_argv.c
+FILES_7	=	dayofbirth.c dayofbirth_stdin.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -28,6 +29,9 @@ OBJS_5	=	${addprefix ${O_PATH}, ${FILES_5:.c=.o}}
 
 SRCS_6	=	${addprefix ${S_PATH}, ${FILES_6}}
 OBJS_6	=	${addprefix ${O_PATH}, ${FILES_6:.c=.o}}
+
+SRCS_7	=	${addprefix ${S_PATH}, ${FILES_7}}
+OBJS_7	=	${addprefix ${O_PATH}, ${FILES_7:.c=.o}}
 
 CC		=	clang
 
@@ -83,6 +87,14 @@ questionThreeOne:	${OBJS_5}
 
 questionThreeTwo:	${OBJS_6}
 					@${CC} ${OBJS_6} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@.exe
+
+questionThreeThree:	${OBJS_7}
+					@${CC} ${OBJS_7} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""

@@ -167,3 +167,32 @@ You can now test your function with the golang package :
 cd tests
 go run main.go -questions q32
 ```
+
+**Question 3.**
+
+- Create a file called `dayofbirth_stdin.c` inside the `srcs` folder.
+- Create a main function to retrieve the name and the birthdate of a user and display is day of birth. For exemple :
+
+```bash
+./questionThreeThree
+Thibault C.
+23/03/2001
+```
+
+Displays `Thibault C. was born on a friday.`. If the date don't exist, for exemple 20/14/2022, the program prints `The date 20/14/2022 don't exist.`. The name of the user won't exceed 100 characters.
+
+You can compile your code with the makefile : `make questionThreeThree` or you can also use the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth.c -o objs/dayofbirth.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth_stdin.c -o objs/dayofbirth_stdin.o
+
+clang objs/dayofbirth.o objs/dayofbirth_stdin.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThreeThree -I includes/
+```
+
+You can now test your function with the golang package :
+
+``` bash
+cd tests
+go run main.go -questions q33
+```

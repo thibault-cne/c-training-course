@@ -14,3 +14,9 @@ type commandThreeStdinArgsModel struct {
 	thirdInt  string
 	result    string
 }
+
+type commandStdinArgsModel struct {
+	cmd    *exec.Cmd
+	args   []string
+	result string
+}
