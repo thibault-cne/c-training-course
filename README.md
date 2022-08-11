@@ -5,3 +5,7 @@ This repo is meant to learn step-by-step the C language. I'll try to create good
 Feel free to let me know what d you think of those exercices and if you have any idea to improve them, I'll be happy to add some questions/exercices.
 
 I'm not a teacher, I'm currently a student in TELECOM Nancy but I like to make little courses to my friends so I try this C-training pack.
+
+## Licence
+
+This project is licensed under the MIT license. Please read the LICENSE file.
