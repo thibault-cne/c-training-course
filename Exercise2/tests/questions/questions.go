@@ -27,7 +27,7 @@ func QuestionOneOne() {
 		fmt.Printf("				Expected 'Hello World !!' but got '%s'\n", answer)
 	}
 
-	fmt.Printf("	Hello World : Passed %d/1 test\n", passedTests)
+	fmt.Printf("		Hello World : Passed %d/1 test\n", passedTests)
 	fmt.Println(color.BlueString("	[ENDING HELLO WORLD TEST]"))
 }
 
@@ -38,15 +38,16 @@ func QuestionTwoTwo() {
 		cmds        = make([]commandResultModel, 0)
 		passedTests = 0
 		totalTest   = 0
+		executable  = "../build/questionTwoTwo.exe"
 	)
 
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "1", "10", "11"), result: "11"})
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "10", "10", "10"), result: "10"})
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "-1", "10", "2"), result: "10"})
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "10", "100", "30"), result: "100"})
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "-1", "-30", "-2"), result: "-1"})
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "-1", "-30"), result: "null"})
-	cmds = append(cmds, commandResultModel{cmd: exec.Command("../build/questionTwoTwo.exe", "-1", "-30", "-2", "4"), result: "null"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "1", "10", "11"), result: "11"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "10", "10", "10"), result: "10"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "-1", "10", "2"), result: "10"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "10", "100", "30"), result: "100"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "-1", "-30", "-2"), result: "-1"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "-1", "-30"), result: "null"})
+	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "-1", "-30", "-2", "4"), result: "null"})
 
 	for _, cmd := range cmds {
 		totalTest++
@@ -82,22 +83,23 @@ func QuestionTwoThree() {
 		cmds        = make([]commandThreeStdinArgsModel, 0)
 		passedTests = 0
 		totalTest   = 0
+		executable  = "../build/questionTwoThree.exe"
 	)
 
 	cmds = append(cmds, commandThreeStdinArgsModel{
-		cmd:      exec.Command("../build/questionTwoThree.exe"),
+		cmd:      exec.Command(executable),
 		firstInt: "10", secondInt: "12", thirdInt: "15", result: "15"})
 	cmds = append(cmds, commandThreeStdinArgsModel{
-		cmd:      exec.Command("../build/questionTwoThree.exe"),
+		cmd:      exec.Command(executable),
 		firstInt: "-1", secondInt: "12", thirdInt: "0", result: "12"})
 	cmds = append(cmds, commandThreeStdinArgsModel{
-		cmd:      exec.Command("../build/questionTwoThree.exe"),
+		cmd:      exec.Command(executable),
 		firstInt: "-10", secondInt: "-1", thirdInt: "0", result: "0"})
 	cmds = append(cmds, commandThreeStdinArgsModel{
-		cmd:      exec.Command("../build/questionTwoThree.exe"),
+		cmd:      exec.Command(executable),
 		firstInt: "0", secondInt: "0", thirdInt: "0", result: "0"})
 	cmds = append(cmds, commandThreeStdinArgsModel{
-		cmd:      exec.Command("../build/questionTwoThree.exe"),
+		cmd:      exec.Command(executable),
 		firstInt: "-100", secondInt: "-90", thirdInt: "-100", result: "-90"})
 
 	for _, cmd := range cmds {
@@ -132,26 +134,27 @@ func QuestionThreeTwo() {
 		cmds        = make([]commandResultModel, 0)
 		passedTests = 0
 		totalTest   = 0
+		executable  = "../build/questionThreeTwo.exe"
 	)
 
 	cmds = append(cmds, commandResultModel{
-		cmd:    exec.Command("../build/questionThreeTwo.exe", "Thibault", "C.", "23/03/2001"),
+		cmd:    exec.Command(executable, "Thibault", "C.", "23/03/2001"),
 		result: "Thibault C. was born on a Friday.",
 	})
 	cmds = append(cmds, commandResultModel{
-		cmd:    exec.Command("../build/questionThreeTwo.exe", "Gerald", "O.", "19/03/1978"),
+		cmd:    exec.Command(executable, "Gerald", "O.", "19/03/1978"),
 		result: "Gerald O. was born on a Sunday.",
 	})
 	cmds = append(cmds, commandResultModel{
-		cmd:    exec.Command("../build/questionThreeTwo.exe", "John", "D.", "23/12/1970"),
+		cmd:    exec.Command(executable, "John", "D.", "23/12/1970"),
 		result: "John D. was born on a Wednesday.",
 	})
 	cmds = append(cmds, commandResultModel{
-		cmd:    exec.Command("../build/questionThreeTwo.exe", "John", "C.", "30/14/1978"),
+		cmd:    exec.Command(executable, "John", "C.", "30/14/1978"),
 		result: "The date 30/14/1978 don't exist.",
 	})
 	cmds = append(cmds, commandResultModel{
-		cmd:    exec.Command("../build/questionThreeTwo.exe", "Thibault", "C."),
+		cmd:    exec.Command(executable, "Thibault", "C."),
 		result: "",
 	})
 

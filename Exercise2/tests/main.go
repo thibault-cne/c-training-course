@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os/exec"
 
 	"exercise2.tests/questions"
 	"github.com/fatih/color"
@@ -24,33 +25,51 @@ func main() {
 
 	fmt.Println(color.YellowString("[STARTING TESTS]"))
 
-	questions := flag.Args()
-
-	for _, q := range questions {
-		launchQuestion(q)
-	}
+	launchQuestions()
 
 	fmt.Println(color.YellowString("[END OF TESTS]"))
 }
 
-func launchQuestion(question string) {
-	if question == "q11" || question == "question11" {
-		questions.QuestionOneOne()
+func launchQuestions() {
+	cases := []struct {
+		exec string
+		fnc  func()
+	}{
+		{
+			exec: "../build/questionOneOne.exe",
+			fnc: func() {
+				questions.QuestionOneOne()
+			},
+		},
+		{
+			exec: "../build/questionTwoTwo.exe",
+			fnc: func() {
+				questions.QuestionTwoTwo()
+			},
+		},
+		{
+			exec: "../build/questionTwoThree.exe",
+			fnc: func() {
+				questions.QuestionTwoThree()
+			},
+		},
+		{
+			exec: "../build/questionThreeTwo.exe",
+			fnc: func() {
+				questions.QuestionThreeTwo()
+			},
+		},
+		{
+			exec: "../build/questionThreeThree.exe",
+			fnc: func() {
+				questions.QuestionThreeThree()
+			},
+		},
 	}
 
-	if question == "q22" || question == "question22" {
-		questions.QuestionTwoTwo()
-	}
-
-	if question == "q23" || question == "question23" {
-		questions.QuestionTwoThree()
-	}
-
-	if question == "q32" || question == "question32" {
-		questions.QuestionThreeTwo()
-	}
-
-	if question == "q33" || question == "question33" {
-		questions.QuestionThreeThree()
+	for _, c := range cases {
+		if _, err := exec.LookPath(c.exec); err == nil {
+			c.fnc()
+		}
 	}
 }
