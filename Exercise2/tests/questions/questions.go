@@ -7,9 +7,9 @@ import (
 	"github.com/fatih/color"
 )
 
-func QuestionOneOne() {
+func QuestionOneOne(executable string) {
 	fmt.Println(color.BlueString("	[STARTING HELLO WORLD TEST]"))
-	cmd := exec.Command("../build/questionOneOne.exe")
+	cmd := exec.Command(executable)
 
 	_, stdout := startCommand(cmd)
 
@@ -31,14 +31,13 @@ func QuestionOneOne() {
 	fmt.Println(color.BlueString("	[ENDING HELLO WORLD TEST]"))
 }
 
-func QuestionTwoTwo() {
+func QuestionTwoTwo(executable string) {
 	fmt.Println(color.BlueString("	[STARTING MAX3 ARGV TEST]"))
 
 	var (
 		cmds        = make([]commandResultModel, 0)
 		passedTests = 0
 		totalTest   = 0
-		executable  = "../build/questionTwoTwo.exe"
 	)
 
 	cmds = append(cmds, commandResultModel{cmd: exec.Command(executable, "1", "10", "11"), result: "11"})
@@ -76,14 +75,13 @@ func QuestionTwoTwo() {
 	fmt.Println(color.BlueString("	[ENDING MAX3 ARGV TEST]"))
 }
 
-func QuestionTwoThree() {
+func QuestionTwoThree(executable string) {
 	fmt.Println(color.BlueString("	[STARTING MAX3 STDIN TEST]"))
 
 	var (
 		cmds        = make([]commandThreeStdinArgsModel, 0)
 		passedTests = 0
 		totalTest   = 0
-		executable  = "../build/questionTwoThree.exe"
 	)
 
 	cmds = append(cmds, commandThreeStdinArgsModel{
@@ -127,14 +125,13 @@ func QuestionTwoThree() {
 	fmt.Println(color.BlueString("	[ENDING MAX3 STDIN TEST]"))
 }
 
-func QuestionThreeTwo() {
+func QuestionThreeTwo(executable string) {
 	fmt.Println(color.BlueString("	[STARTING DAYOFBIRTH ARGV TEST]"))
 
 	var (
 		cmds        = make([]commandResultModel, 0)
 		passedTests = 0
 		totalTest   = 0
-		executable  = "../build/questionThreeTwo.exe"
 	)
 
 	cmds = append(cmds, commandResultModel{
@@ -179,14 +176,13 @@ func QuestionThreeTwo() {
 	fmt.Println(color.BlueString("	[ENDING DAYOFBIRTH ARGV TEST]"))
 }
 
-func QuestionThreeThree() {
+func QuestionThreeThree(executable string) {
 	fmt.Println(color.BlueString("	[STARTING DAYOFBIRTH STDIN TEST]"))
 
 	var (
 		cmds        = make([]commandStdinArgsModel, 0)
 		passedTests = 0
 		totalTest   = 0
-		executable  = "../build/questionThreeThree.exe"
 	)
 
 	cmds = append(cmds, commandStdinArgsModel{

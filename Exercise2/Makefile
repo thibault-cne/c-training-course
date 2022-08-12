@@ -5,6 +5,8 @@ FILES_3 = 	max3.c max3_argv.c
 FILES_4	=	max3.c max3_stdin.c
 FILES_5	=	dayofbirth.c exerciseThree_questionOne.c
 FILES_6	=	dayofbirth.c dayofbirth_argv.c
+FILES_7	=	dayofbirth.c dayofbirth_stdin.c
+FILES_8 =	pointers.c exerciseFour_questionOne.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -29,6 +31,12 @@ OBJS_5	=	${addprefix ${O_PATH}, ${FILES_5:.c=.o}}
 SRCS_6	=	${addprefix ${S_PATH}, ${FILES_6}}
 OBJS_6	=	${addprefix ${O_PATH}, ${FILES_6:.c=.o}}
 
+SRCS_7	=	${addprefix ${S_PATH}, ${FILES_7}}
+OBJS_7	=	${addprefix ${O_PATH}, ${FILES_7:.c=.o}}
+
+SRCS_8	=	${addprefix ${S_PATH}, ${FILES_8}}
+OBJS_8	=	${addprefix ${O_PATH}, ${FILES_8:.c=.o}}
+
 CC		=	clang
 
 RM		=	rm -rf
@@ -47,7 +55,7 @@ questionOneOne:		${OBJS_1}
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
-					@mv ./$@ ${B_PATH}/$@.exe
+					@mv ./$@ ${B_PATH}/$@
 
 questionTwoOne:		${OBJS_2}
 					@${CC} ${OBJS_2} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -55,7 +63,7 @@ questionTwoOne:		${OBJS_2}
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
-					@mv ./$@ ${B_PATH}/$@.exe
+					@mv ./$@ ${B_PATH}/$@
 
 questionTwoTwo:		${OBJS_3}
 					@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -63,7 +71,7 @@ questionTwoTwo:		${OBJS_3}
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
-					@mv ./$@ ${B_PATH}/$@.exe
+					@mv ./$@ ${B_PATH}/$@
 
 questionTwoThree:	${OBJS_4}
 					@${CC} ${OBJS_4} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -71,7 +79,7 @@ questionTwoThree:	${OBJS_4}
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
-					@mv ./$@ ${B_PATH}/$@.exe
+					@mv ./$@ ${B_PATH}/$@
 
 questionThreeOne:	${OBJS_5}
 					@${CC} ${OBJS_5} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -79,7 +87,7 @@ questionThreeOne:	${OBJS_5}
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
-					@mv ./$@ ${B_PATH}/$@.exe
+					@mv ./$@ ${B_PATH}/$@
 
 questionThreeTwo:	${OBJS_6}
 					@${CC} ${OBJS_6} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -87,10 +95,27 @@ questionThreeTwo:	${OBJS_6}
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 					@echo ""
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
-					@mv ./$@ ${B_PATH}/$@.exe
+					@mv ./$@ ${B_PATH}/$@
+
+questionThreeThree:	${OBJS_7}
+					@${CC} ${OBJS_7} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@
+
+questionFourOne:	${OBJS_8}
+					@${CC} ${OBJS_8} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@
 
 
-all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree questionThreeOne questionThreeTwo
+all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree questionThreeOne questionThreeTwo \
+			questionThreeThree questionFourOne
 
 clean:
 			@${RM} ${O_PATH}*

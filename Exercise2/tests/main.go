@@ -33,43 +33,43 @@ func main() {
 func launchQuestions() {
 	cases := []struct {
 		exec string
-		fnc  func()
+		fnc  func(string)
 	}{
 		{
-			exec: "../build/questionOneOne.exe",
-			fnc: func() {
-				questions.QuestionOneOne()
+			exec: "../build/questionOneOne",
+			fnc: func(exec string) {
+				questions.QuestionOneOne(exec)
 			},
 		},
 		{
-			exec: "../build/questionTwoTwo.exe",
-			fnc: func() {
-				questions.QuestionTwoTwo()
+			exec: "../build/questionTwoTwo",
+			fnc: func(exec string) {
+				questions.QuestionTwoTwo(exec)
 			},
 		},
 		{
-			exec: "../build/questionTwoThree.exe",
-			fnc: func() {
-				questions.QuestionTwoThree()
+			exec: "../build/questionTwoThree",
+			fnc: func(exec string) {
+				questions.QuestionTwoThree(exec)
 			},
 		},
 		{
-			exec: "../build/questionThreeTwo.exe",
-			fnc: func() {
-				questions.QuestionThreeTwo()
+			exec: "../build/questionThreeTwo",
+			fnc: func(exec string) {
+				questions.QuestionThreeTwo(exec)
 			},
 		},
 		{
-			exec: "../build/questionThreeThree.exe",
-			fnc: func() {
-				questions.QuestionThreeThree()
+			exec: "../build/questionThreeThree",
+			fnc: func(exec string) {
+				questions.QuestionThreeThree(exec)
 			},
 		},
 	}
 
 	for _, c := range cases {
 		if _, err := exec.LookPath(c.exec); err == nil {
-			c.fnc()
+			c.fnc(c.exec)
 		}
 	}
 }

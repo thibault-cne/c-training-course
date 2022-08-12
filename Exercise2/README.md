@@ -7,18 +7,19 @@
     - [Exercise 1](#exercise-1--hello-world)
     - [Exercise 2](#exercise-2--argumentsstdoutstdin)
     - [Exercise 3](#exercise-3--argumentsstdinstdout)
+    - [Exercise 4](#exercise-4--pointers)
 
 ### Requirements
 
 For this exercise, `golang` will be needed to run the tests. You can download it directly from the official golang website : [official golang page](https://go.dev/doc/install).
 
-You can run all the golang tests inside the `tests` folder with the following command : 
+You can run all the golang tests inside the `tests` folder with the following command :
 
 ``` bash
-go run main.go -questions ${question list}
+go run main.go -questions
 ```
 
-Where the question list is a list of all questions you want to test. Questions names should be written in this form : `q1` or `question1` for question one.
+It will automatically search for executable files inside the `build` folder and test those files.
 
 ### Exercises
 
@@ -34,14 +35,14 @@ To compile your file you can use the given makefile with the command `make quest
 ``` bash
 mkdir -p ./objs | clang -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/helloworld.c -o objs/helloworld.o
 
-clang -Wall -Wextra -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls  ./objs/helloworld.o -o ./build/questionOneOne.exe
+clang -Wall -Wextra -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls  ./objs/helloworld.o -o ./build/questionOneOne
 ```
 
 You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q11
+go run main.go -questions
 ```
 
 #### Exercise 2 : arguments/stdout/stdin
@@ -54,14 +55,14 @@ In this exercise you will create a function that returns the max of 3 integers. 
 - Create a `max3.h` file inside the `includes` folder and link this file to `max3.c`
 - Inside this file create a function with the signature `int max(int a, int b, int c);` thats return the maximum between 3 integers.
 
-You can test your function with the given snow tests. You can run it with the makefile with `make questionTwoOne` and then `./build/questionTwoOne.exe`.
+You can test your function with the given snow tests. You can run it with the makefile with `make questionTwoOne` and then `./build/questionTwoOne`.
 You can also compile the files with the following code :
 
 ``` bash
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseTwo_questionOne.c -o objs/exerciseTwo_questionOne.o
 
-clang objs/max3.o objs/exerciseTwo_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwoOne -I includes/
+clang objs/max3.o objs/exerciseTwo_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionTwoOne
 ```
 
 **Question 2.**
@@ -79,14 +80,14 @@ You can compile your code with the makefile : `make questionTwoTwo` or you can a
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3_argv.c -o objs/max3_argv.o
 
-clang objs/max3.o objs/max3_argv.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwoTwo -I includes/
+clang objs/max3.o objs/max3_argv.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionTwoTwo
 ```
 
 You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q22
+go run main.go -questions
 ```
 
 **Question 3.**
@@ -102,14 +103,14 @@ You can compile your code with the makefile : `make questionTwoThree` or you can
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3.c -o objs/max3.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/max3_stdin.c -o objs/max3_stdin.o
 
-clang objs/max3.o objs/max3_stdin.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionTwoThree -I includes/
+clang objs/max3.o objs/max3_stdin.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionTwoThree
 ```
 
 You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q23
+go run main.go -questions
 ```
 
 #### Exercise 3 : arguments/stdin/stdout
@@ -137,14 +138,14 @@ Help : you can use the Zeller formula (1885) :
 >
 >   ω ≡ 0 (mod 7) if it's sunday, 1 (mod 7) if it's monday, etc.
 
-You can test your function with the given snow tests. You can run it with the makefile with `make questionThreeOne` and then `./build/questionThreeOne.exe`.
+You can test your function with the given snow tests. You can run it with the makefile with `make questionThreeOne` and then `./build/questionThreeOne`.
 You can also compile the files with the following code :
 
 ``` bash
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth.c -o objs/dayofbirth.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseThree_questionOne.c -o objs/exerciseThree_questionOne.o
 
-clang objs/dayofbirth.o objs/exerciseThree_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThreeOne -I includes/
+clang objs/dayofbirth.o objs/exerciseThree_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionThreeOne
 ```
 
 **Question 2.**
@@ -158,14 +159,14 @@ You can compile your code with the makefile : `make questionThreeTwo` or you can
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth.c -o objs/dayofbirth.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth_argv.c -o objs/dayofbirth_argv.o
 
-clang objs/dayofbirth.o objs/dayofbirth_argv.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThreeTwo -I includes/
+clang objs/dayofbirth.o objs/dayofbirth_argv.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionThreeTwo
 ```
 
 You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q32
+go run main.go -questions
 ```
 
 **Question 3.**
@@ -187,12 +188,30 @@ You can compile your code with the makefile : `make questionThreeThree` or you c
 mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth.c -o objs/dayofbirth.o
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/dayofbirth_stdin.c -o objs/dayofbirth_stdin.o
 
-clang objs/dayofbirth.o objs/dayofbirth_stdin.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o questionThreeThree -I includes/
+clang objs/dayofbirth.o objs/dayofbirth_stdin.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionThreeThree
 ```
 
 You can now test your function with the golang package :
 
 ``` bash
 cd tests
-go run main.go -questions q33
+go run main.go -questions
+```
+
+#### Exercise 4 : pointers
+
+- Create a file called `pointers.c` inside the `srcs` folder and a file `pointers.h` inside the `includes` folder.
+
+**Question 1.**
+
+- Create a function that swaps two integers passed in parameters. The signature of the function is `void swap(int a, int b);`.
+
+You can test your function with the given snow tests. You can run it with the makefile with `make questionFourOne` and then `./build/questionFourOne`.
+You can also compile the files with the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/pointers.c -o objs/pointers.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseFour_questionOne.c -o objs/exerciseFour_questionOne.o
+
+clang objs/pointers.o objs/exerciseFour_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionFourOne
 ```
