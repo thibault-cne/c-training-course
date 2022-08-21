@@ -31,7 +31,7 @@ ${NAME}:	${OBJS}
 			@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 			@echo ""
 			@echo "\033[3;92mCompilation is completed !${S} 🎉"
-			@mv ./$@ ${B_PATH}$@.exe
+			@mv ./$@ ${B_PATH}$@
 
 all:		build ${NAME}
 
@@ -52,12 +52,12 @@ test:		re
 			@echo ""
 			@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 			@echo ""
-			@${B_PATH}${NAME}.exe
+			@${B_PATH}${NAME}
 
 build: 		
 			@mkdir -p $@
 
-.PHONY: all clean fclean re Solver Test Testeur
+.PHONY: all clean fclean re build space test
 
 S 		=		\033[0m
 BOLD 	= 		\033[1m

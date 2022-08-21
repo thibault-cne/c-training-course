@@ -48,7 +48,7 @@ questionTwo:	${OBJS_2}
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 				@echo ""
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+				@mv ./$@ ${B_PATH}/$@
 
 questionThree:	${OBJS_3}
 				@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -56,7 +56,7 @@ questionThree:	${OBJS_3}
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 				@echo ""
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+				@mv ./$@ ${B_PATH}/$@
 
 questionFour:	${OBJS_4}
 				@${CC} ${OBJS_4} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -64,7 +64,7 @@ questionFour:	${OBJS_4}
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 				@echo ""
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+				@mv ./$@ ${B_PATH}/$@
 
 questionFive:	${OBJS_5}
 				@${CC} ${OBJS_5} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -72,7 +72,7 @@ questionFive:	${OBJS_5}
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 				@echo ""
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+				@mv ./$@ ${B_PATH}/$@
 
 questionSix:	${OBJS_6}
 				@${CC} ${OBJS_6} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -80,7 +80,7 @@ questionSix:	${OBJS_6}
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 				@echo ""
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+				@mv ./$@ ${B_PATH}/$@
 
 questionSeven:	${OBJS_7}
 				@${CC} ${OBJS_7} ${CFLAGS} -o $@ -I ${I_PATH}
@@ -88,7 +88,7 @@ questionSeven:	${OBJS_7}
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
 				@echo ""
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
-				@mv ./$@ ${B_PATH}/$@.exe
+				@mv ./$@ ${B_PATH}/$@
 
 all:		build questionTwo questionThree questionFour questionFive questionSix questionSeven
 
@@ -109,36 +109,36 @@ testsSecondQuestion:	re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
-						@${B_PATH}questionTwo.exe
+						@${B_PATH}questionTwo
 
 testsThirdQuestion:	re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
-						@${B_PATH}questionThree.exe
+						@${B_PATH}questionThree
 
 testsFourthQuestion:	re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
-						@${B_PATH}questionFour.exe
+						@${B_PATH}questionFour
 
 testsFifthQuestion:	re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
-						@${B_PATH}questionFive.exe
+						@${B_PATH}questionFive
 
 testsSixthQuestion:	re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
-						@${B_PATH}questionSix.exe
+						@${B_PATH}questionSix
 
 build: 		
 			@mkdir -p $@
 
-.PHONY: all clean fclean re Solver Test Testeur
+.PHONY: all clean fclean re build space
 
 S 		=		\033[0m
 BOLD 	= 		\033[1m

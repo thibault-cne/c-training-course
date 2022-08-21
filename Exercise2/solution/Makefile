@@ -133,7 +133,7 @@ re:			fclean space all
 build: 		
 			@mkdir -p $@
 
-.PHONY: all clean fclean re Solver Test Testeur
+.PHONY: all clean fclean re build space
 
 S 		=		\033[0m
 BOLD 	= 		\033[1m
