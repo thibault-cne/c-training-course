@@ -1,5 +1,6 @@
 FOLDERS = Exercise1 Exercise2
 
+SOLUTIONS = solution/
 BASEPATH = ..
 
 all:
@@ -16,7 +17,14 @@ re:
 		echo "${GREEN}${BOLD}$$f${S}${S} has been rebuilt 🎉";	\
 	done
 
-.PHONY: all re
+solutions:
+	@for f in ${FOLDERS}; do 				\
+    	cd $$f/${SOLUTIONS} && make re; 	\
+		cd ${BASEPATH}/..;					\
+		echo "${GREEN}${BOLD}$$f solution${S}${S} has been rebuilt 🎉";	\
+	done
+
+.PHONY: all re solutions
 
 S 		=		\033[0m
 BOLD 	= 		\033[1m
