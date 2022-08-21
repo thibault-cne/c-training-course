@@ -1,3 +1,4 @@
+# You need to specify every Exercise folders here in  order to build them.
 FOLDERS = Exercise1 Exercise2
 
 SOLUTIONS = solution/
