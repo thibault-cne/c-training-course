@@ -204,7 +204,7 @@ go run main.go -questions
 
 **Question 1.**
 
-- Create a function that swaps two integers passed in parameters. The signature of the function is `void swap(int a, int b);`.
+- Create a function that swaps two integers passed in parameters. The signature of the function is `void swap(int *a, int *b);`.
 
 You can test your function with the given snow tests. You can run it with the makefile with `make questionFourOne` and then `./build/questionFourOne`.
 You can also compile the files with the following code :
@@ -214,4 +214,61 @@ mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -
 clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseFour_questionOne.c -o objs/exerciseFour_questionOne.o
 
 clang objs/pointers.o objs/exerciseFour_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionFourOne
+```
+
+**Question 2.**
+
+- Create a function that adds two integers passed in parameters as pointers. The signature of the function is `int add(int *a, int *b);`.
+
+You can test your function with the given snow tests. You can run it with the makefile with `make questionFourTwo` and then `./build/questionFourTwo`.
+You can also compile the files with the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/pointers.c -o objs/pointers.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseFour_questionTwo.c -o objs/exerciseFour_questionTwo.o
+
+clang objs/pointers.o objs/exerciseFour_questionTwo.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./build/questionFourTwo
+```
+
+#### Exercise 5 : string.h
+
+In this exercise, you will create a small `string.h` library. You can't use any other library and builtins functions. To use the `NULL` value you need these lines :
+
+```c
+#undef NULL
+#define NULL ((void)*0)
+```
+
+- Create a file called `string.h` inside the `includes` folder and a file called `string.c` inside the `srcs` folder.
+
+**Question 1.**
+
+- Create a function to calculate the length of a string aka `char*`. The signature of the function is : `int _strlen(const char *str);`
+
+Make sure that the function returns `-1` in case of a `NULL` value.
+
+You can test your function with the given snow tests. You can run it with the makefile with `make questionFiveOne` and then `./build/questionFiveOne`.
+You can also compile the files with the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/pointers.c -o objs/pointers.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseFive_questionOne.c -o objs/exerciseFive_questionOne.o
+
+clang objs/pointers.o objs/exerciseFive_questionOne.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./buildFive_questionOne
+```
+
+**Question 2.**
+
+- Create a function to compare two strings. It should return `1` if strings are equal and `0` if not. Make sure that the function returns `-1` in case of a `NULL` value.
+
+The function signature is : `int _strcmp(const char *str1, const char *str2);`.
+
+You can test your function with the given snow tests. You can run it with the makefile with `make questionFiveTwo` and then `./build/questionFiveTwo`.
+You can also compile the files with the following code :
+
+``` bash
+mkdir -p ./objs | clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/pointers.c -o objs/pointers.o
+clang -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -c srcs/exerciseFive_questionTwo.c -o objs/exerciseFive_questionTwo.o
+
+clang objs/pointers.o objs/exerciseFive_questionTwo.o -DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -o ./buildFive_questionTwo
 ```

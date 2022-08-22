@@ -7,6 +7,9 @@ FILES_5	=	dayofbirth.c exerciseThree_questionOne.c
 FILES_6	=	dayofbirth.c dayofbirth_argv.c
 FILES_7	=	dayofbirth.c dayofbirth_stdin.c
 FILES_8 =	pointers.c exerciseFour_questionOne.c
+FILES_9	=	pointers.c exerciseFour_questionTwo.c
+FILES_10 =	string.c exerciseFive_questionOne.c
+FILES_11 =	string.c exerciseFive_questionTwo.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -36,6 +39,15 @@ OBJS_7	=	${addprefix ${O_PATH}, ${FILES_7:.c=.o}}
 
 SRCS_8	=	${addprefix ${S_PATH}, ${FILES_8}}
 OBJS_8	=	${addprefix ${O_PATH}, ${FILES_8:.c=.o}}
+
+SRCS_9	=	${addprefix ${S_PATH}, ${FILES_9}}
+OBJS_9	=	${addprefix ${O_PATH}, ${FILES_9:.c=.o}}
+
+SRCS_10	=	${addprefix ${S_PATH}, ${FILES_10}}
+OBJS_10	=	${addprefix ${O_PATH}, ${FILES_10:.c=.o}}
+
+SRCS_11	=	${addprefix ${S_PATH}, ${FILES_11}}
+OBJS_11	=	${addprefix ${O_PATH}, ${FILES_11:.c=.o}}
 
 CC		=	clang
 
@@ -113,9 +125,32 @@ questionFourOne:	${OBJS_8}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
+questionFourTwo:	${OBJS_9}
+					@${CC} ${OBJS_9} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@
+
+questionFiveOne:	${OBJS_10}
+					@${CC} ${OBJS_10} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@
+
+questionFiveTwo:	${OBJS_11}
+					@${CC} ${OBJS_11} ${CFLAGS} -o $@ -I ${I_PATH}
+					@echo ""
+					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
+					@echo ""
+					@echo "\033[3;92mCompilation is completed !${S} 🎉"
+					@mv ./$@ ${B_PATH}/$@
 
 all:		build questionOneOne questionTwoOne questionTwoTwo questionTwoThree questionThreeOne questionThreeTwo \
-			questionThreeThree questionFourOne
+			questionThreeThree questionFourOne questionFourTwo questionFiveOne questionFiveTwo
 
 clean:
 			@${RM} ${O_PATH}*
