@@ -26,8 +26,13 @@ int main()
 
     char *days[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
+    printf("Enter a name : ");
     fgets(name, 100, stdin);
+    printf("Your name is : %s", name);
+
+    printf("Enter a date (format dd/mm/yyyy) : ");
     fgets(date, 11, stdin);
+    printf("Your date is : %s\n", date);
 
     sscanf(date, "%d/%d/%d", &day, &month, &year);
 

@@ -1,22 +1,14 @@
 package questions
 
-import "os/exec"
-
-type commandResultModel struct {
-	cmd    *exec.Cmd
-	result string
+type Test struct {
+	Name       string
+	Executable string
+	TestSet    []testSet
 }
 
-type commandThreeStdinArgsModel struct {
-	cmd       *exec.Cmd
-	firstInt  string
-	secondInt string
-	thirdInt  string
-	result    string
-}
-
-type commandStdinArgsModel struct {
-	cmd    *exec.Cmd
-	args   []string
-	result string
+type testSet struct {
+	ItName    string
+	Args      []string
+	Result    string
+	StdinArgs []string
 }

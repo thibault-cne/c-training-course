@@ -8,6 +8,7 @@
     - [Exercise 2](#exercise-2--argumentsstdoutstdin)
     - [Exercise 3](#exercise-3--argumentsstdinstdout)
     - [Exercise 4](#exercise-4--pointers)
+    - [Exercise 5](#exercise-5--stringh)
 
 ### Requirements
 

@@ -11,11 +11,18 @@ import (
 
 var (
 	question = flag.Bool("questions", false, "Must be present to provide tests.")
+
+	tests = []questions.Test{
+		questions.T_questionOneOne,
+		questions.T_questionTwoTwo,
+		questions.T_questionTwoThree,
+		questions.T_questionThreeTwo,
+		questions.T_questionThreeThree,
+	}
 )
 
 func main() {
 	// We get the value of the question flag passed in the call of the executable
-	// For exemple : tests -question=q1
 	flag.Parse()
 
 	if !*question {
@@ -31,45 +38,10 @@ func main() {
 }
 
 func launchQuestions() {
-	cases := []struct {
-		exec string
-		fnc  func(string)
-	}{
-		{
-			exec: "../build/questionOneOne",
-			fnc: func(exec string) {
-				questions.QuestionOneOne(exec)
-			},
-		},
-		{
-			exec: "../build/questionTwoTwo",
-			fnc: func(exec string) {
-				questions.QuestionTwoTwo(exec)
-			},
-		},
-		{
-			exec: "../build/questionTwoThree",
-			fnc: func(exec string) {
-				questions.QuestionTwoThree(exec)
-			},
-		},
-		{
-			exec: "../build/questionThreeTwo",
-			fnc: func(exec string) {
-				questions.QuestionThreeTwo(exec)
-			},
-		},
-		{
-			exec: "../build/questionThreeThree",
-			fnc: func(exec string) {
-				questions.QuestionThreeThree(exec)
-			},
-		},
-	}
+	for _, t := range tests {
 
-	for _, c := range cases {
-		if _, err := exec.LookPath(c.exec); err == nil {
-			c.fnc(c.exec)
+		if _, err := exec.LookPath(t.Executable); err == nil {
+			questions.ExecuteTest(t)
 		}
 	}
 }
