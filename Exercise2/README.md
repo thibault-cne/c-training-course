@@ -12,7 +12,7 @@
 
 ### Requirements
 
-For this exercise, `golang` will be needed to run the tests. You can download it directly from the official golang website : [official golang page](https://go.dev/doc/install).
+For this exercise, `golang` will be needed to run the tests. You can download it directly from the official golang website : [official golang page](https://go.dev/doc/install).For this exercise, `golang` will be needed to run the tests. You can download it directly from the official golang website : [official golang page](https://go.dev/doc/install). You will also need to install `stdbuf` command. It is inside the `coreutils GNU` package. You can get it here : [stdbuf installation guide](https://command-not-found.com/stdbuf).
 
 You can run all the golang tests inside the `tests` folder with the following command :
 
