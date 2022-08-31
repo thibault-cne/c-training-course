@@ -1,5 +1,5 @@
 # You need to specify every Exercise folders here in  order to build them.
-FOLDERS = Exercise1 Exercise2
+FOLDERS = Exercise1 Exercise2 Exercise3
 
 SOLUTIONS = solution/
 BASEPATH = ..
