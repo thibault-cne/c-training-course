@@ -22,6 +22,8 @@ int main()
     contactList = create_contact_linked_list(8);
     input = malloc(sizeof(char) * 7);
 
+    printf("Welcome to the phoneBook application.\n");
+
     while (exitStatus == 1)
     {
         fgets(input, 7, stdin);
