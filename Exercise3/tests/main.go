@@ -17,16 +17,16 @@ func main() {
 		return
 	}
 
-	display(colorize("[STARTING TESTS]", Yellow), 0)
+	Yellow("[START TESTS]\n")
 
 	runEndTests(endTests)
 
-	display(colorize("[END TESTS]", Yellow), 0)
+	Yellow("[END TESTS]\n")
 }
 
 func runEndTests(tests []Test) {
 	for _, t := range tests {
-		display(colorize("[START "+strings.ToUpper(t.Name)+" TEST]", Blue), 1)
+		Blue("	[START %s TEST]\n", strings.ToUpper(t.Name))
 
 		for _, tSet := range t.TestSet {
 			cmd, stdin, _ := startExecutable(*executable)
@@ -36,13 +36,13 @@ func runEndTests(tests []Test) {
 			}
 
 			if err := cmd.Wait(); err.Error() == tSet.Result {
-				display(colorize("✓ Success : ", Green)+tSet.ItName, 2)
+				Green("		✓ Success : %s\n", tSet.ItName)
 			} else {
-				display(colorize("x Failed : ", Red)+tSet.ItName, 2)
-				display(fmt.Sprintf("Expected %s but got %s instead.", tSet.Result, err.Error()), 3)
+				Red("		x Failed : %s\n", tSet.ItName)
+				fmt.Printf("		Expected %s but got %s instead.\n", tSet.Result, err.Error())
 			}
 		}
 
-		display(colorize("[END "+strings.ToUpper(t.Name)+" TEST]", Blue), 1)
+		Blue("	[END %s TEST]\n", strings.ToUpper(t.Name))
 	}
 }
