@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os/exec"
 
+	"exercise2.tests/colorize"
 	"exercise2.tests/questions"
-	"github.com/fatih/color"
 )
 
 var (
@@ -26,15 +26,15 @@ func main() {
 	flag.Parse()
 
 	if !*question {
-		fmt.Println(color.RedString("[ERROR]"), "Questions flag must be enabled to provide tests.")
+		fmt.Println(colorize.RedString("[ERROR]"), "Questions flag must be enabled to provide tests.")
 		return
 	}
 
-	fmt.Println(color.YellowString("[STARTING TESTS]"))
+	colorize.Yellow("[STARTING TESTS]\n")
 
 	launchQuestions()
 
-	fmt.Println(color.YellowString("[END OF TESTS]"))
+	colorize.Yellow("[END TESTS]\n")
 }
 
 func launchQuestions() {
