@@ -28,7 +28,7 @@ int _strcmp(const char *str1, const char *str2)
 
     if (_strlen(str1) != _strlen(str2))
     {
-        return 0;
+        return 1;
     }
 
     int i;
@@ -43,5 +43,5 @@ int _strcmp(const char *str1, const char *str2)
         }
     }
 
-    return 1;
+    return 0;
 }

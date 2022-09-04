@@ -53,7 +53,7 @@ int main()
 
     free_contact_linked_list(contactList);
 
-    return 1;
+    return 0;
 }
 
 int addNewContact(contact_linked_list *contactList)

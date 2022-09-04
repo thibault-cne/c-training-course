@@ -15,9 +15,10 @@ int main()
 
     printf("%d\n", max(atoi(numberOne), atoi(numberTwo), atoi(numberThree)));
 
+    // Free allocated memory
     free(numberOne);
     free(numberTwo);
     free(numberThree);
 
-    return 1;
+    return 0;
 }

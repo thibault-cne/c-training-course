@@ -33,5 +33,5 @@ int main(int argc, char **argv)
     }
 
     printf("%s %s was born on a %s.\n", firstName, lastName, days[dayNumber]);
-    return 1;
+    return 0;
 }

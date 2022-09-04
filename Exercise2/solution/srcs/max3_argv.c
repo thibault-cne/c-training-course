@@ -14,5 +14,5 @@ int main(int argc, char **argv)
 
     printf("%d\n", max(atoi(argv[i + 1]), atoi(argv[i + 2]), atoi(argv[i + 3])));
 
-    return 1;
+    return 0;
 }

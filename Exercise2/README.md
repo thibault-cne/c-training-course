@@ -260,7 +260,7 @@ clang objs/pointers.o objs/exerciseFive_questionOne.o -DSNOW_ENABLED -Wall -Wext
 
 **Question 2.**
 
-- Create a function to compare two strings. It should return `1` if strings are equal and `0` if not. Make sure that the function returns `-1` in case of a `NULL` value.
+- Create a function to compare two strings. It should return `0` if strings are equal and `1` if not. Make sure that the function returns `-1` in case of a `NULL` value.
 
 The function signature is : `int _strcmp(const char *str1, const char *str2);`.
 

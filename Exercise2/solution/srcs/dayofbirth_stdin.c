@@ -47,5 +47,10 @@ int main()
     displayName(&name);
 
     printf("%s was born on a %s.\n", name, days[dayNumber]);
-    return 1;
+
+    // Free allocated memory
+    free(name);
+    free(date);
+
+    return 0;
 }
