@@ -39,7 +39,7 @@ int _strcmp(const char *str1, const char *str2)
     {
         if (str1[i] != str2[i])
         {
-            return 0;
+            return 1;
         }
     }
 
