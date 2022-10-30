@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"os/exec"
 
 	"exercise2.tests/colorize"
@@ -32,16 +33,28 @@ func main() {
 
 	colorize.Yellow("[STARTING TESTS]\n")
 
-	launchQuestions()
+	s := launchQuestions()
 
 	colorize.Yellow("[END TESTS]\n")
+
+	os.Exit(s)
 }
 
-func launchQuestions() {
+func launchQuestions() int {
+	var exitStatus int
+
+	exitStatus = 0
+
 	for _, t := range tests {
 
 		if _, err := exec.LookPath(t.Executable); err == nil {
-			questions.ExecuteTest(t)
+			res := questions.ExecuteTest(t)
+
+			if res == 1 {
+				exitStatus = 1
+			}
 		}
 	}
+
+	return exitStatus
 }

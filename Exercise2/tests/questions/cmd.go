@@ -54,7 +54,11 @@ func getLastLine(stdout *bufio.Scanner) string {
 	return previousLine
 }
 
-func ExecuteTest(t Test) {
+func ExecuteTest(t Test) int {
+	var res int
+
+	res = 0
+
 	display(colorize("[START "+strings.ToUpper(t.Name)+" TEST]", Blue), 1)
 
 	for _, tSet := range t.TestSet {
@@ -67,6 +71,7 @@ func ExecuteTest(t Test) {
 		answer := getLastLine(stdout)
 
 		if answer != tSet.Result {
+			res = 1
 			display(colorize("x Failed : ", Red)+tSet.ItName, 2)
 			display(fmt.Sprintf("Expected %s but got %s instead.", tSet.Result, answer), 3)
 		} else {
@@ -79,4 +84,6 @@ func ExecuteTest(t Test) {
 	}
 
 	display(colorize("[END "+strings.ToUpper(t.Name)+" TEST]", Blue), 1)
+
+	return res
 }
