@@ -42,7 +42,7 @@ ${O_PATH}%.o:	${S_PATH}%.c
 				@echo "${BOLD}${CYAN}Compiling${S}${S} ${IGREY}$<${S} ${YELLOW}-> ${S}${SBLUE}$@${S} ⚙️"
 
 
-questionTwo:	${OBJS_2}
+questionTwo:	build ${OBJS_2}
 				@${CC} ${OBJS_2} ${CFLAGS} -o $@ -I ${I_PATH}
 				@echo ""
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -50,7 +50,7 @@ questionTwo:	${OBJS_2}
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
 				@mv ./$@ ${B_PATH}$@
 
-questionThree:	${OBJS_3}
+questionThree:	build ${OBJS_3}
 				@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
 				@echo ""
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -58,7 +58,7 @@ questionThree:	${OBJS_3}
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
 				@mv ./$@ ${B_PATH}$@
 
-questionFour:	${OBJS_4}
+questionFour:	build ${OBJS_4}
 				@${CC} ${OBJS_4} ${CFLAGS} -o $@ -I ${I_PATH}
 				@echo ""
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -74,7 +74,7 @@ questionFive:	${OBJS_5}
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
 				@mv ./$@ ${B_PATH}$@
 
-questionSix:	${OBJS_6}
+questionSix:	build ${OBJS_6}
 				@${CC} ${OBJS_6} ${CFLAGS} -o $@ -I ${I_PATH}
 				@echo ""
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -82,7 +82,7 @@ questionSix:	${OBJS_6}
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
 				@mv ./$@ ${B_PATH}$@
 
-questionSeven:	${OBJS_7}
+questionSeven:	build ${OBJS_7}
 				@${CC} ${OBJS_7} ${CFLAGS} -o $@ -I ${I_PATH}
 				@echo ""
 				@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -90,7 +90,7 @@ questionSeven:	${OBJS_7}
 				@echo "\033[3;92mCompilation is completed !${S} 🎉"
 				@mv ./$@ ${B_PATH}$@
 
-all:		build questionTwo questionThree questionFour questionFive questionSix questionSeven
+all:		questionTwo questionThree questionFour questionFive questionSix questionSeven
 
 clean:
 			@${RM} ${O_PATH}*
@@ -104,6 +104,9 @@ space:
 			@echo " "
 
 re:			fclean space all
+
+build:
+	@mkdir -r ${B_PATH}
 
 testsSecondQuestion:	re
 						@echo ""
