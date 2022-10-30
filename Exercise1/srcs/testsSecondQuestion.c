@@ -7,7 +7,7 @@ describe(SecondQuestion)
 {
     it("Testing addition function.")
     {
-        asserteq(addition(1, 1), 3);
+        asserteq(addition(1, 1), 2);
         asserteq(addition(3, 2), 5);
         assertneq(addition(1, 7), 5);
     }

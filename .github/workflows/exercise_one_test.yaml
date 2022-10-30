@@ -9,14 +9,64 @@ jobs:
       - name: Check repository
         uses: actions/checkout@v3
 
-      - name: Build test exec for question two
+      - name: Build test exec for question Two
         run: |
           cd Exercise1
           make questionTwo
       
-      - name: Test question one
+      - name: Test question Two
         run: |
           cd Exercise1
           build/questionTwo
+      
+      - name: Build test exec for question Three
+        run: |
+          cd Exercise1
+          make questionThree
+
+      - name: Test question Three
+        run: |
+          cd Exercise1
+          build/questionThree
+      
+      - name: Build test exec for question Four
+        run: |
+          cd Exercise1
+          make questionFour
+
+      - name: Test question Four
+        run: |
+          cd Exercise1
+          build/questionFour
+
+      - name: Build test exec for question Five
+        run: |
+          cd Exercise1
+          make questionFive
+
+      - name: Test question Five
+        run: |
+          cd Exercise1
+          build/questionFive
+
+      - name: Build test exec for question Six
+        run: |
+          cd Exercise1
+          make questionSix
+
+      - name: Test question Six
+        run: |
+          cd Exercise1
+          build/questionSix
+
+      - name: Build test exec for question Seven
+        run: |
+          cd Exercise1
+          make questionSeven
+
+      - name: Test question Seven
+        run: |
+          cd Exercise1
+          build/questionSeven
 
       
