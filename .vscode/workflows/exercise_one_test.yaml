@@ -1,0 +1,17 @@
+name: exercise_one_test
+
+on: [push]
+
+jobs:
+  question-two:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build test exec for question one
+        run: |
+          cd ./Exercise1
+          make questionTwo
+      
+      - name: Test question one
+        run: ./build/questionTwo
+
+      

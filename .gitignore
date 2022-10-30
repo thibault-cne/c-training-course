@@ -46,4 +46,5 @@ Mkfile.old
 dkms.conf
 
 # Ignore vscode config files.
-*.vscode
+.vscode/*.log
+.vscode/*.json
