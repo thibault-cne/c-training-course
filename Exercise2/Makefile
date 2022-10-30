@@ -61,7 +61,7 @@ ${O_PATH}%.o:	${S_PATH}%.c
 				@echo "${BOLD}${CYAN}Compiling${S}${S} ${IGREY}$<${S} ${YELLOW}-> ${S}${SBLUE}$@${S} ⚙️"
 
 
-questionOneOne:		${OBJS_1}
+questionOneOne:		build ${OBJS_1}
 					@${CC} ${OBJS_1} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -69,7 +69,7 @@ questionOneOne:		${OBJS_1}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionTwoOne:		${OBJS_2}
+questionTwoOne:		build ${OBJS_2}
 					@${CC} ${OBJS_2} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -77,7 +77,7 @@ questionTwoOne:		${OBJS_2}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionTwoTwo:		${OBJS_3}
+questionTwoTwo:		build ${OBJS_3}
 					@${CC} ${OBJS_3} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -85,7 +85,7 @@ questionTwoTwo:		${OBJS_3}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionTwoThree:	${OBJS_4}
+questionTwoThree:	build ${OBJS_4}
 					@${CC} ${OBJS_4} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -93,7 +93,7 @@ questionTwoThree:	${OBJS_4}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionThreeOne:	${OBJS_5}
+questionThreeOne:	build ${OBJS_5}
 					@${CC} ${OBJS_5} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -101,7 +101,7 @@ questionThreeOne:	${OBJS_5}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionThreeTwo:	${OBJS_6}
+questionThreeTwo:	build ${OBJS_6}
 					@${CC} ${OBJS_6} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -109,7 +109,7 @@ questionThreeTwo:	${OBJS_6}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionThreeThree:	${OBJS_7}
+questionThreeThree:	build ${OBJS_7}
 					@${CC} ${OBJS_7} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -117,7 +117,7 @@ questionThreeThree:	${OBJS_7}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionFourOne:	${OBJS_8}
+questionFourOne:	build ${OBJS_8}
 					@${CC} ${OBJS_8} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -133,7 +133,7 @@ questionFourTwo:	${OBJS_9}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionFiveOne:	${OBJS_10}
+questionFiveOne:	build ${OBJS_10}
 					@${CC} ${OBJS_10} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
@@ -141,7 +141,7 @@ questionFiveOne:	${OBJS_10}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}/$@
 
-questionFiveTwo:	${OBJS_11}
+questionFiveTwo:	build ${OBJS_11}
 					@${CC} ${OBJS_11} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"
