@@ -15,6 +15,6 @@ jobs:
           make questionTwo
       
       - name: Test question one
-        run: ./build/questionTwo
+        run: build/questionTwo
 
       

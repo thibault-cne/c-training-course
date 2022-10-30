@@ -106,7 +106,7 @@ space:
 re:			fclean space all
 
 build:
-	@mkdir -r ${B_PATH}
+	@mkdir -p ${B_PATH}
 
 testsSecondQuestion:	re
 						@echo ""
@@ -114,7 +114,7 @@ testsSecondQuestion:	re
 						@echo ""
 						@${B_PATH}questionTwo
 
-testsThirdQuestion:	re
+testsThirdQuestion:		re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
@@ -126,20 +126,17 @@ testsFourthQuestion:	re
 						@echo ""
 						@${B_PATH}questionFour
 
-testsFifthQuestion:	re
+testsFifthQuestion:		re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
 						@${B_PATH}questionFive
 
-testsSixthQuestion:	re
+testsSixthQuestion:		re
 						@echo ""
 						@echo "${BOLD}${PURPLE}Launching tests${S}${S} 🖥️"
 						@echo ""
 						@${B_PATH}questionSix
-
-build: 		
-			@mkdir -p $@
 
 .PHONY: all clean fclean re build space
 
