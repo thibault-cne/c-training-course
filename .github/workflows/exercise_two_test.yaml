@@ -66,7 +66,7 @@ jobs:
   
   check-subexercise2-files-question-three:
     runs-on: ubuntu-latest
-    needs: check-subexercise2-files-question-two
+    needs: check-subexercise2-files-question-one
     steps:
       - name: Check repository
         uses: actions/checkout@v3
@@ -76,6 +76,68 @@ jobs:
         uses: andstor/file-existence-action@v2
         with:
           files: "Exercise2/srcs/max3_stdin.c"
+
+      - name: File exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: echo All files exists!
+      
+      - name: File don't exit
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: exit 1
+  
+  check-subexercise3-files-question-one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "Exercise2/srcs/dayofbirth.c, Exercise2/includes/dayofbirth.h"
+
+      - name: File exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: echo All files exists!
+      
+      - name: File don't exit
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: exit 1
+  
+  check-subexercise3-files-question-two:
+    runs-on: ubuntu-latest
+    needs: check-subexercise3-files-question-one
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "Exercise2/srcs/dayofbirth_argv.c"
+
+      - name: File exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: echo All files exists!
+      
+      - name: File don't exit
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: exit 1
+  
+  check-subexercise3-files-question-three:
+    runs-on: ubuntu-latest
+    needs: check-subexercise3-files-question-one
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "Exercise2/srcs/dayofbirth_stdin.c"
 
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'true'
@@ -148,6 +210,57 @@ jobs:
         run: |
           cd Exercise2
           make questionTwoThree
+      
+      - name: Test question one
+        run: |
+          cd Exercise2/tests
+          go run main.go -questions
+  
+  subexercise-three-question-one:
+    runs-on: ubuntu-latest
+    needs: check-subexercise3-files-question-one
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      
+      - name: Build question one
+        run: |
+          cd Exercise2
+          make questionThreeOne
+      
+      - name: Test question one
+        run: |
+          cd Exercise2
+          build/questionThreeOne
+  
+  subexercise-three-question-two:
+    runs-on: ubuntu-latest
+    needs: check-subexercise3-files-question-two
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      
+      - name: Build question one
+        run: |
+          cd Exercise2
+          make questionThreeTwo
+      
+      - name: Test question one
+        run: |
+          cd Exercise2/tests
+          go run main.go -questions
+  
+  subexercise-three-question-three:
+    runs-on: ubuntu-latest
+    needs: check-subexercise3-files-question-three
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      
+      - name: Build question one
+        run: |
+          cd Exercise2
+          make questionThreeThree
       
       - name: Test question one
         run: |
