@@ -6,10 +6,13 @@ jobs:
   question-two:
     runs-on: ubuntu-latest
     steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+
       - name: Build test exec for question two
         run: |
           ls -al
-          cd ./Exercise1
+          cd Exercise1
           make questionTwo
       
       - name: Test question one
