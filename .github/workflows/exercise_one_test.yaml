@@ -16,7 +16,7 @@ jobs:
       
       - name: Test question one
         run: |
-          ls -al
+          cd Exercise1
           build/questionTwo
 
       
