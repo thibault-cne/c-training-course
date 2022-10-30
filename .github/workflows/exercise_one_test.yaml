@@ -6,8 +6,9 @@ jobs:
   question-two:
     runs-on: ubuntu-latest
     steps:
-      - name: Build test exec for question one
+      - name: Build test exec for question two
         run: |
+          ls -al
           cd ./Exercise1
           make questionTwo
       
