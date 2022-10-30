@@ -125,7 +125,7 @@ questionFourOne:	build ${OBJS_8}
 					@echo "\033[3;92mCompilation is completed !${S} 🎉"
 					@mv ./$@ ${B_PATH}$@
 
-questionFourTwo:	${OBJS_9}
+questionFourTwo:	build ${OBJS_9}
 					@${CC} ${OBJS_9} ${CFLAGS} -o $@ -I ${I_PATH}
 					@echo ""
 					@echo "${BOLD}${PURPLE}Building${S}${S} ${IGREY}$@${S} 🖥️"

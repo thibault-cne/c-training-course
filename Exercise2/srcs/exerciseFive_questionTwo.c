@@ -1,4 +1,4 @@
-#include "../includes/snow.h"
+#include "../solution/includes/snow.h"
 #include "../includes/string.h"
 
 snow_main();
